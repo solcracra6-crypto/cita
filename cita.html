@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cita Minecraft 💚</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    overflow: hidden;
+    background-color: #f5e6f0; /* fondo liso suave */
+    color: #333;
+}
+
+/* CORAZONES FLOTANDO */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: flotar 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+h1 {
+    margin-top: 60px;
+    color: #444;
+}
+
+p {
+    color: #555;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+/* BOTÓN SÍ PASTEL */
+#yes {
+    padding: 18px 35px;
+    font-size: 20px;
+    border: 2px solid #e6a4c9;
+    cursor: pointer;
+    margin: 10px;
+    font-family: 'Courier New', monospace;
+    color: #6b3e57;
+    background-color: #f7c6e0; /* rosita pastel */
+}
+
+/* BOTÓN NO */
+#no {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: 2px solid #999;
+    background-color: #e57373;
+    color: white;
+    position: absolute;
+    cursor: pointer;
+}
+
+.cats {
+    margin-top: 40px;
+    font-size: 60px;
+}
+
+#mensajeFinal {
+    display: none;
+    margin-top: 30px;
+    font-size: 22px;
+    color: #444;
+}
+</style>
+</head>
+
+<body>
+
+<h1>💚 Agustín, ¿tenés una cita conmigo? 💚</h1>
+<p>Modo Minecraft ⛏️😏</p>
+
+<div class="cats">
+    🐱 ❤️ 🐱
+</div>
+
+<div class="container">
+    <button id="yes" onclick="aceptar()">Sí 💕</button>
+    <button id="no">No 😒</button>
+</div>
+
+<div id="mensajeFinal">
+    💚 +100 XP DE AMOR DESBLOQUEADO 💚  
+    <br><br>
+    Hoy jugamos Minecraft juntitos 🏡✨  
+    <br><br>
+    Te amo muchísimo 💕
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+
+/* BOTÓN NO ESCAPA */
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+/* CORAZONES */
+function crearCorazon() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(crearCorazon, 300);
+
+/* CLICK SÍ */
+function aceptar() {
+    document.querySelector(".container").style.display = "none";
+    document.getElementById("mensajeFinal").style.display = "block";
+}
+</script>
+
+</body>
+</html>
